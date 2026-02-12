@@ -1,0 +1,366 @@
+
+with trs as(
+    SELECT job_id, job_title,
+    name as company_name, salary_year_avg, job_work_from_home
+from job_postings_fact as jpf LEFT JOIN company_dim as c on jpf.company_id = c.company_id
+where job_work_from_home = True 
+    and salary_year_avg is not null
+    and job_title_short = 'Data Analyst'
+    ORDER BY salary_year_avg desc
+limit 10
+)
+select trs.job_id, job_title, skills
+from trs INNER JOIN skills_job_dim as sjd on trs.job_id = sjd.job_id 
+INNER JOIN skills_dim as sd on sjd.skill_id = sd.skill_id
+;
+
+with trs as(
+SELECT 
+    job_id, job_title,name as company_name, salary_year_avg
+from 
+    job_postings_fact as jpf LEFT JOIN company_dim as c on jpf.company_id = c.company_id
+where 
+    job_location = 'Anywhere'
+    and salary_year_avg is not null
+    and job_title_short = 'Data Analyst'
+ORDER BY salary_year_avg Desc
+limit 10
+)
+select trs.job_id, job_title, skills
+from trs INNER JOIN skills_job_dim as sjd on trs.job_id = sjd.job_id 
+INNER JOIN skills_dim as sd on sjd.skill_id = sd.skill_id
+
+-- the correct ans is as follows - 
+
+[
+  {
+    "job_id": 552322,
+    "job_title": "Associate Director- Data Insights",
+    "skills": "sql"
+  },
+  {
+    "job_id": 552322,
+    "job_title": "Associate Director- Data Insights",
+    "skills": "python"
+  },
+  {
+    "job_id": 552322,
+    "job_title": "Associate Director- Data Insights",
+    "skills": "r"
+  },
+  {
+    "job_id": 552322,
+    "job_title": "Associate Director- Data Insights",
+    "skills": "azure"
+  },
+  {
+    "job_id": 552322,
+    "job_title": "Associate Director- Data Insights",
+    "skills": "databricks"
+  },
+  {
+    "job_id": 552322,
+    "job_title": "Associate Director- Data Insights",
+    "skills": "aws"
+  },
+  {
+    "job_id": 552322,
+    "job_title": "Associate Director- Data Insights",
+    "skills": "pandas"
+  },
+  {
+    "job_id": 552322,
+    "job_title": "Associate Director- Data Insights",
+    "skills": "pyspark"
+  },
+  {
+    "job_id": 552322,
+    "job_title": "Associate Director- Data Insights",
+    "skills": "jupyter"
+  },
+  {
+    "job_id": 552322,
+    "job_title": "Associate Director- Data Insights",
+    "skills": "excel"
+  },
+  {
+    "job_id": 552322,
+    "job_title": "Associate Director- Data Insights",
+    "skills": "tableau"
+  },
+  {
+    "job_id": 552322,
+    "job_title": "Associate Director- Data Insights",
+    "skills": "power bi"
+  },
+  {
+    "job_id": 552322,
+    "job_title": "Associate Director- Data Insights",
+    "skills": "powerpoint"
+  },
+  {
+    "job_id": 99305,
+    "job_title": "Data Analyst, Marketing",
+    "skills": "sql"
+  },
+  {
+    "job_id": 99305,
+    "job_title": "Data Analyst, Marketing",
+    "skills": "python"
+  },
+  {
+    "job_id": 99305,
+    "job_title": "Data Analyst, Marketing",
+    "skills": "r"
+  },
+  {
+    "job_id": 99305,
+    "job_title": "Data Analyst, Marketing",
+    "skills": "hadoop"
+  },
+  {
+    "job_id": 99305,
+    "job_title": "Data Analyst, Marketing",
+    "skills": "tableau"
+  },
+  {
+    "job_id": 1021647,
+    "job_title": "Data Analyst (Hybrid/Remote)",
+    "skills": "sql"
+  },
+  {
+    "job_id": 1021647,
+    "job_title": "Data Analyst (Hybrid/Remote)",
+    "skills": "crystal"
+  },
+  {
+    "job_id": 1021647,
+    "job_title": "Data Analyst (Hybrid/Remote)",
+    "skills": "oracle"
+  },
+  {
+    "job_id": 1021647,
+    "job_title": "Data Analyst (Hybrid/Remote)",
+    "skills": "tableau"
+  },
+  {
+    "job_id": 1021647,
+    "job_title": "Data Analyst (Hybrid/Remote)",
+    "skills": "flow"
+  },
+  {
+    "job_id": 168310,
+    "job_title": "Principal Data Analyst (Remote)",
+    "skills": "sql"
+  },
+  {
+    "job_id": 168310,
+    "job_title": "Principal Data Analyst (Remote)",
+    "skills": "python"
+  },
+  {
+    "job_id": 168310,
+    "job_title": "Principal Data Analyst (Remote)",
+    "skills": "go"
+  },
+  {
+    "job_id": 168310,
+    "job_title": "Principal Data Analyst (Remote)",
+    "skills": "snowflake"
+  },
+  {
+    "job_id": 168310,
+    "job_title": "Principal Data Analyst (Remote)",
+    "skills": "pandas"
+  },
+  {
+    "job_id": 168310,
+    "job_title": "Principal Data Analyst (Remote)",
+    "skills": "numpy"
+  },
+  {
+    "job_id": 168310,
+    "job_title": "Principal Data Analyst (Remote)",
+    "skills": "excel"
+  },
+  {
+    "job_id": 168310,
+    "job_title": "Principal Data Analyst (Remote)",
+    "skills": "tableau"
+  },
+  {
+    "job_id": 168310,
+    "job_title": "Principal Data Analyst (Remote)",
+    "skills": "gitlab"
+  },
+  {
+    "job_id": 731368,
+    "job_title": "Director, Data Analyst - HYBRID",
+    "skills": "sql"
+  },
+  {
+    "job_id": 731368,
+    "job_title": "Director, Data Analyst - HYBRID",
+    "skills": "python"
+  },
+  {
+    "job_id": 731368,
+    "job_title": "Director, Data Analyst - HYBRID",
+    "skills": "azure"
+  },
+  {
+    "job_id": 731368,
+    "job_title": "Director, Data Analyst - HYBRID",
+    "skills": "aws"
+  },
+  {
+    "job_id": 731368,
+    "job_title": "Director, Data Analyst - HYBRID",
+    "skills": "oracle"
+  },
+  {
+    "job_id": 731368,
+    "job_title": "Director, Data Analyst - HYBRID",
+    "skills": "snowflake"
+  },
+  {
+    "job_id": 731368,
+    "job_title": "Director, Data Analyst - HYBRID",
+    "skills": "tableau"
+  },
+  {
+    "job_id": 731368,
+    "job_title": "Director, Data Analyst - HYBRID",
+    "skills": "power bi"
+  },
+  {
+    "job_id": 731368,
+    "job_title": "Director, Data Analyst - HYBRID",
+    "skills": "sap"
+  },
+  {
+    "job_id": 731368,
+    "job_title": "Director, Data Analyst - HYBRID",
+    "skills": "jenkins"
+  },
+  {
+    "job_id": 731368,
+    "job_title": "Director, Data Analyst - HYBRID",
+    "skills": "bitbucket"
+  },
+  {
+    "job_id": 731368,
+    "job_title": "Director, Data Analyst - HYBRID",
+    "skills": "atlassian"
+  },
+  {
+    "job_id": 731368,
+    "job_title": "Director, Data Analyst - HYBRID",
+    "skills": "jira"
+  },
+  {
+    "job_id": 731368,
+    "job_title": "Director, Data Analyst - HYBRID",
+    "skills": "confluence"
+  },
+  {
+    "job_id": 310660,
+    "job_title": "Principal Data Analyst, AV Performance Analysis",
+    "skills": "sql"
+  },
+  {
+    "job_id": 310660,
+    "job_title": "Principal Data Analyst, AV Performance Analysis",
+    "skills": "python"
+  },
+  {
+    "job_id": 310660,
+    "job_title": "Principal Data Analyst, AV Performance Analysis",
+    "skills": "r"
+  },
+  {
+    "job_id": 310660,
+    "job_title": "Principal Data Analyst, AV Performance Analysis",
+    "skills": "git"
+  },
+  {
+    "job_id": 310660,
+    "job_title": "Principal Data Analyst, AV Performance Analysis",
+    "skills": "bitbucket"
+  },
+  {
+    "job_id": 310660,
+    "job_title": "Principal Data Analyst, AV Performance Analysis",
+    "skills": "atlassian"
+  },
+  {
+    "job_id": 310660,
+    "job_title": "Principal Data Analyst, AV Performance Analysis",
+    "skills": "jira"
+  },
+  {
+    "job_id": 310660,
+    "job_title": "Principal Data Analyst, AV Performance Analysis",
+    "skills": "confluence"
+  },
+  {
+    "job_id": 1749593,
+    "job_title": "Principal Data Analyst",
+    "skills": "sql"
+  },
+  {
+    "job_id": 1749593,
+    "job_title": "Principal Data Analyst",
+    "skills": "python"
+  },
+  {
+    "job_id": 1749593,
+    "job_title": "Principal Data Analyst",
+    "skills": "go"
+  },
+  {
+    "job_id": 1749593,
+    "job_title": "Principal Data Analyst",
+    "skills": "snowflake"
+  },
+  {
+    "job_id": 1749593,
+    "job_title": "Principal Data Analyst",
+    "skills": "pandas"
+  },
+  {
+    "job_id": 1749593,
+    "job_title": "Principal Data Analyst",
+    "skills": "numpy"
+  },
+  {
+    "job_id": 1749593,
+    "job_title": "Principal Data Analyst",
+    "skills": "excel"
+  },
+  {
+    "job_id": 1749593,
+    "job_title": "Principal Data Analyst",
+    "skills": "tableau"
+  },
+  {
+    "job_id": 1749593,
+    "job_title": "Principal Data Analyst",
+    "skills": "gitlab"
+  },
+  {
+    "job_id": 387860,
+    "job_title": "ERM Data Analyst",
+    "skills": "sql"
+  },
+  {
+    "job_id": 387860,
+    "job_title": "ERM Data Analyst",
+    "skills": "python"
+  },
+  {
+    "job_id": 387860,
+    "job_title": "ERM Data Analyst",
+    "skills": "r"
+  }
+]
