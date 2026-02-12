@@ -1,0 +1,18 @@
+# Data files
+csv_files/
+*.csv
+*.xlsx
+*.parquet
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+# IDE
+.vscode/
+.idea/
